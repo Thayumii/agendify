@@ -14,7 +14,7 @@ public class ClienteService {
 
     public Cliente cadastrar(Cliente cliente) {
         // Regras de negócio
-        boolean telefoneJaCadastrado = clienteRepository.existByTelefone(cliente.getTelefone());
+        boolean telefoneJaCadastrado = clienteRepository.existsByTelefone(cliente.getTelefone());
 
         if (telefoneJaCadastrado){
             // exceção se o telefone já existir
