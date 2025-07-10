@@ -1,7 +1,7 @@
 package com.agendify.agendify.controller;
 
 import com.agendify.agendify.domain.Cliente;
-import com.agendify.agendify.repository.ClienteRepository;
+import com.agendify.agendify.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,17 +18,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 public class ClienteController {
     @Autowired // Pede ao Spring pra injetar uma instância do ClienteRepository.
-    private ClienteRepository clienteRepository;
+    private ClienteService clienteService;
 
     @PostMapping // Mapeia este método para o verbo HTTP POST.
     public Cliente cadastrar(@RequestBody Cliente cliente) {
         // O @ResquestBody converte o JSON do corpo do corpo da requisição para um objeto Cliente.
-        return clienteRepository.save(cliente);
+        return clienteService.cadastrar(cliente);
     }
     
     @GetMapping
     public List<Cliente> listar() {
-        return clienteRepository.findAll();
+        return clienteService.listarTodos();
     }
     
     
